@@ -19,6 +19,26 @@ int main() {
 }
 ```
 
+| Spécificateur | Type de données   | Description                                                        |
+|---------------|-------------------|--------------------------------------------------------------------|
+| %c            | char              | Affiche un caractère                                                |
+| %d            | int               | Affiche un entier signé                                             |
+| %i            | int               | Affiche un entier signé (identique à %d)                            |
+| %f            | float             | Affiche un nombre à virgule flottante                               |
+| %lf           | double            | Affiche un nombre à virgule flottante (double précision)            |
+| %u            | unsigned int      | Affiche un entier non signé                                         |
+| %ld           | long int          | Affiche un long entier signé                                        |
+| %lu           | unsigned long     | Affiche un long entier non signé                                    |
+| %x            | unsigned int      | Affiche un entier non signé en hexadécimal                          |
+| %X            | unsigned int      | Affiche un entier non signé en hexadécimal (majuscule)              |
+| %o            | unsigned int      | Affiche un entier non signé en octal                                |
+| %p            | void*             | Affiche une adresse mémoire                                         |
+| %s            | char*             | Affiche une chaîne de caractères                                    |
+| %e            | float / double    | Affiche un nombre en notation scientifique                          |
+| %g            | float / double    | Affiche un nombre en notation scientifique ou décimale selon la valeur |
+| %n            | Aucun             | Stocke le nombre de caractères écrits jusqu'à présent               |
+| %%            | Aucun             | Affiche le caractère %                                              |
+
 - **Python** : Utilise `print` pour afficher des données. print est plus flexible et peut gérer plusieurs types de
   données sans spécificateurs de format. Les f-strings (introduits dans **Python** 3.6) permettent une interpolation de
   chaînes propre et efficace.

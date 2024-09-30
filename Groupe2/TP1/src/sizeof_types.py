@@ -1,5 +1,6 @@
 import sys
 
+# Initialize variables of each type
 my_int: int = 0
 my_str: str = ""
 my_float: float = 0.00
@@ -8,6 +9,7 @@ my_list: list = []
 my_tuple: tuple = ()
 my_dict: dict = {}
 
+# Print the size of each type
 print(f"Size of int : {sys.getsizeof(my_int)} octets")
 print(f"Size of str : {sys.getsizeof(my_str)} octets")
 print(f"Size of float : {sys.getsizeof(my_float)} octets")

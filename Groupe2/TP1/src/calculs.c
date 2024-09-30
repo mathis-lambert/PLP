@@ -6,17 +6,20 @@ int main()
     int num2;
     char op;
 
+    // Demander les valeurs et l'opérateur
     printf("Valeur 1 : \n");
     scanf("%d", &num1);
     printf("Entrez un opérateur : ");
     scanf(" %c", &op); // Note the space before %c to ignore whitespace
 
+    // Si l'opérateur est un opérateur `unaire`, on ne demande pas la deuxième valeur
     if (op != '~')
     {
         printf("Valeur 2 : \n");
         scanf("%d", &num2);
     }
 
+    // Calculer et afficher le résultat
     switch (op)
     {
     case '+':

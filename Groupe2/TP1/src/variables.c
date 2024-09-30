@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
+    // Déclaration des variables
     char c = 'A';
     signed char sc = -128;
     unsigned char uc = 255;
@@ -16,6 +17,7 @@ int main() {
     double d = 3.141592653589793;
     long double ld = 3.141592653589793238L;
 
+    // Affichage des variables
     printf("char: %c\n", c);
     printf("signed char: %d\n", sc);
     printf("unsigned char: %u\n", uc);

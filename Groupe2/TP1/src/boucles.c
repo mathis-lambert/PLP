@@ -4,9 +4,11 @@ int main()
 {
     int taille;
 
+    // Demander la taille du triangle
     printf("Entrez la taille du triangle (strictement inférieure à 10) : ");
     scanf("%d", &taille);
 
+    // Vérifier que la taille est bien inférieure à 10
     if (taille >= 10)
     {
         printf("La taille doit être strictement inférieure à 10.\n");
@@ -14,11 +16,13 @@ int main()
     }
 
 
-    // Boucle for
+    // Boucle For
     for (int i = 1; i <= taille; i++)
     {
+        // Pour chaque ligne, on affiche i étoiles
         for (int j = 1; j <= i; j++)
         {
+            // Si on est sur la première colonne, la dernière colonne ou la dernière ligne, on affiche une étoile
             if (j == 1 || j == i || i == taille)
             {
                 printf("* ");
@@ -36,8 +40,10 @@ int main()
     while (i <= taille)
     {
         int j = 1;
+        // Pour chaque ligne, on affiche i étoiles
         while (j <= i)
         {
+            // Si on est sur la première colonne, la dernière colonne ou la dernière ligne, on affiche une étoile
             if (j == 1 || j == i || i == taille)
             {
                 printf("* ");

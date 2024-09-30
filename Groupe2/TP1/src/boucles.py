@@ -7,6 +7,7 @@ if taille >= 10:
 # avec for
 for i in range(1, taille + 1):
     for j in range(1, i + 1):
+        # Si j est égal à 1 ou j est égal à i ou i est égal à taille
         if j == 1 or j == i or i == taille:
             print('*', end=' ')
         else:
@@ -18,7 +19,8 @@ i = 1
 while i <= taille:
     j = 1
     while j <= i:
-        if (i + j) % 2 == 0:
+        # Si j est égal à 1 ou j est égal à i ou i est égal à taille
+        if j == 1 or j == i or i == taille:
             print('*', end=' ')
         else:
             print('#', end=' ')

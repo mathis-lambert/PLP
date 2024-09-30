@@ -9,7 +9,8 @@ def main():
     if op != '~':
         num2 = int(input("Valeur 2 : \n"))
 
-    # Exécution de l'opération en fonction de l'opérateur
+    # Avec IF
+    print("Avec if :")
     if op == '+':
         print(f"{num1} {op} {num2} = {num1 + num2}")
     elif op == '-':
@@ -34,6 +35,34 @@ def main():
         print(f"{op}{num1} = {~num1}")
     else:
         print("Opérateur invalide")
+
+    # Avec match
+    print("Avec match :")
+    match op:
+        case '+':
+            print(f"{num1} {op} {num2} = {num1 + num2}")
+        case '-':
+            print(f"{num1} {op} {num2} = {num1 - num2}")
+        case '*':
+            print(f"{num1} {op} {num2} = {num1 * num2}")
+        case '/':
+            if num2 != 0:
+                print(f"{num1} {op} {num2} = {num1 / num2}")
+            else:
+                print("Erreur : division par zéro")
+        case '%':
+            if num2 != 0:
+                print(f"{num1} {op} {num2} = {num1 % num2}")
+            else:
+                print("Erreur : division par zéro")
+        case '&':
+            print(f"{num1} {op} {num2} = {num1 & num2}")
+        case '|':
+            print(f"{num1} {op} {num2} = {num1 | num2}")
+        case '~':
+            print(f"{op}{num1} = {~num1}")
+        case _:
+            print("Opérateur invalide")
 
 
 if __name__ == "__main__":

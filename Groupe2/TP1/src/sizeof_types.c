@@ -2,6 +2,7 @@
 
 int main()
 {
+    // Declaration des variables
     char my_char;
     signed char my_sc;
     unsigned char my_uc;
@@ -19,6 +20,7 @@ int main()
     double my_double;
     long double my_ld;
 
+    // Affichage des tailles des types de données
     printf("Size of char : %lu octets\n", sizeof(my_char));
     printf("Size of signed char : %lu octets\n", sizeof(my_sc));
     printf("Size of unsigned char : %lu octets\n", sizeof(my_uc));
