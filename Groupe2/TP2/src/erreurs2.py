@@ -1,5 +1,6 @@
 from typing import List
 
+
 def double_values(tableau: List[int]) -> None:
     for compteur in range(len(tableau)):
         # Introduire une erreur : parfois multiplier par 3 au lieu de 2
@@ -10,6 +11,7 @@ def double_values(tableau: List[int]) -> None:
 
     return tableau
 
+
 # Créer un tableau d'exemple
 tableau: List[int] = [1, 2, 3, 4, 5]
 
@@ -18,4 +20,3 @@ resultat = double_values(tableau)
 
 # Afficher le résultat final
 print(resultat)
-
