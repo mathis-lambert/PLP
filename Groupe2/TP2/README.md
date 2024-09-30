@@ -158,15 +158,15 @@ Toutes les commandes ont été exécutées avec succès.
 
 ### 2.5
 
-1. `etudiant.py` -> Code rédigé et testé.
-2. `etudiant.c` -> Code rédigé et testé.
+1. `bd_école.py` -> Code rédigé et testé.
+2. `bd_école.c` -> Code rédigé et testé.
 
 ----------------------------------------------------------------------------------------------------------------------------
 
 ### 2.6
 
-1. `analyse.py` -> Code rédigé et testé.
-2. `analyse.c` -> Code rédigé et testé.
+1. `phrases.py` -> Code rédigé et testé.
+2. `phrases.c` -> Code rédigé et testé.
 
 ----------------------------------------------------------------------------------------------------------------------------
 
