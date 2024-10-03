@@ -1,273 +1,159 @@
-# Comparaison entre **C** et **Python**
+### Comparaison entre C et Python
 
-## Bases de la programmation
+Ce document présente une comparaison entre les langages C et Python en se basant sur différents concepts abordés dans le TP. Cette comparaison couvre les bases de la programmation, la manipulation des variables, les opérateurs, les structures de contrôle et les techniques de conversion et formatage.
 
-### Affichage des données
+---
 
-- **C** : Utilise `printf` pour afficher des données. La fonction `printf` nécessite des spécificateurs de format pour
-  indiquer le type des variables à afficher. Par exemple, `%d` pour les entiers, `%f` pour les flottants.
+#### 1. **Bases de la programmation**
 
-Exemple :
+En C, la fonction d'affichage est `printf()`, tandis qu'en Python, nous utilisons `print()`. Les deux fonctions permettent d'afficher des messages à l'écran, mais il y a plusieurs différences significatives à noter.
 
-```c++
-#include <stdio.h>
+- **Syntaxe :**
+  - En **C**, la syntaxe pour utiliser `printf` est plus complexe car elle requiert l'utilisation de formats spécifiques (comme `%d` pour les entiers, `%f` pour les flottants, etc.).
+  - En **Python**, la fonction `print()` est beaucoup plus simple et flexible. Elle ne nécessite pas de formats spécifiques, Python convertit automatiquement les types.
 
-int main() {
-    int nombre = 42;
-    printf("Le nombre est : %d\n", nombre);
-    return 0;
-}
-```
+  **Exemple en C :**
+  ```c
+  printf("Bonjour le Monde!\n");
+  ```
 
-| Spécificateur | Type de données   | Description                                                        |
-|---------------|-------------------|--------------------------------------------------------------------|
-| %c            | char              | Affiche un caractère                                                |
-| %d            | int               | Affiche un entier signé                                             |
-| %i            | int               | Affiche un entier signé (identique à %d)                            |
-| %f            | float             | Affiche un nombre à virgule flottante                               |
-| %lf           | double            | Affiche un nombre à virgule flottante (double précision)            |
-| %u            | unsigned int      | Affiche un entier non signé                                         |
-| %ld           | long int          | Affiche un long entier signé                                        |
-| %lu           | unsigned long     | Affiche un long entier non signé                                    |
-| %x            | unsigned int      | Affiche un entier non signé en hexadécimal                          |
-| %X            | unsigned int      | Affiche un entier non signé en hexadécimal (majuscule)              |
-| %o            | unsigned int      | Affiche un entier non signé en octal                                |
-| %p            | void*             | Affiche une adresse mémoire                                         |
-| %s            | char*             | Affiche une chaîne de caractères                                    |
-| %e            | float / double    | Affiche un nombre en notation scientifique                          |
-| %g            | float / double    | Affiche un nombre en notation scientifique ou décimale selon la valeur |
-| %n            | Aucun             | Stocke le nombre de caractères écrits jusqu'à présent               |
-| %%            | Aucun             | Affiche le caractère %                                              |
+  **Spécificateurs de format en C :**
 
-- **Python** : Utilise `print` pour afficher des données. print est plus flexible et peut gérer plusieurs types de
-  données sans spécificateurs de format. Les f-strings (introduits dans **Python** 3.6) permettent une interpolation de
-  chaînes propre et efficace.
+  | Spécificateur | Type de données   | Description                                                        |
+  |---------------|-------------------|--------------------------------------------------------------------|
+  | %c            | char              | Affiche un caractère                                                |
+  | %d            | int               | Affiche un entier signé                                             |
+  | %i            | int               | Affiche un entier signé (identique à %d)                            |
+  | %f            | float             | Affiche un nombre à virgule flottante                               |
+  | %lf           | double            | Affiche un nombre à virgule flottante (double précision)            |
+  | %u            | unsigned int      | Affiche un entier non signé                                         |
+  | %ld           | long int          | Affiche un long entier signé                                        |
+  | %lu           | unsigned long     | Affiche un long entier non signé                                    |
+  | %x            | unsigned int      | Affiche un entier non signé en hexadécimal                          |
+  | %X            | unsigned int      | Affiche un entier non signé en hexadécimal (majuscule)              |
+  | %o            | unsigned int      | Affiche un entier non signé en octal                                |
+  | %p            | void*             | Affiche une adresse mémoire                                         |
+  | %s            | char*             | Affiche une chaîne de caractères                                    |
+  | %e            | float / double    | Affiche un nombre en notation scientifique                          |
+  | %g            | float / double    | Affiche un nombre en notation scientifique ou décimale selon la valeur |
+  | %n            | Aucun             | Stocke le nombre de caractères écrits jusqu'à présent               |
+  | %%            | Aucun             | Affiche le caractère %                                              |
 
-Exemple :
+  **Exemple en Python :**
+  ```python
+  print("Bonjour le Monde!")
+  ```
 
-```python
-nombre = 42
-print(f"Le nombre est : {nombre}")
-```
+- **Gestion de la mémoire :**
+  - **C** est un langage bas niveau, ce qui signifie que le développeur doit gérer manuellement la mémoire (par exemple, en utilisant `malloc` pour allouer la mémoire et `free` pour la libérer).
+  - **Python** gère la mémoire automatiquement avec un **garbage collector**, ce qui le rend plus simple à utiliser mais peut affecter les performances dans certains cas.
 
-### Gestion de la mémoire
+---
 
-- **C** : La gestion de la mémoire est manuelle. Les programmeurs doivent allouer et libérer la mémoire en utilisant
-  malloc, calloc, realloc, et free. Une mauvaise gestion peut entraîner des fuites de mémoire et des erreurs de
-  segmentation.
+#### 2. **Manipulation des variables**
 
-Exemple :
+- **Typage explicite vs dynamique :**
+  - En **C**, les variables doivent être déclarées avec un type explicite. Le type d'une variable ne peut pas changer après la déclaration. Par exemple :
+    ```c
+    int x = 5;
+    float y = 3.14;
+    ```
+  - En **Python**, le typage est dynamique, ce qui signifie qu'il n'est pas nécessaire de spécifier le type lors de la déclaration. Le type d'une variable peut changer à tout moment.
+    ```python
+    x = 5  # int
+    y = 3.14  # float
+    ```
 
-```c++
-#include <stdlib.h>
+- **Annotations de type :**
+  - En **Python**, même si le typage est dynamique, il est possible d'utiliser des annotations de type pour indiquer quel type une variable devrait avoir. Cependant, ces annotations ne sont pas strictement respectées à l'exécution, elles servent à la documentation ou à des outils de vérification statique.
+    ```python
+    def area(radius: float) -> float:
+        return 3.14 * radius * radius
+    ```
 
-int main() {
-    int *ptr = (int *)malloc(sizeof(int));
-    if (ptr == NULL) {
-        return 1; // Allocation échouée
+---
+
+#### 3. **Opérateurs**
+
+Les deux langages utilisent une variété d'opérateurs arithmétiques, logiques, de comparaison et bit à bit. Cependant, il y a quelques différences dans la façon dont ces opérateurs sont appliqués.
+
+- **Opérateurs arithmétiques :**
+  - Les deux langages partagent les opérateurs de base tels que `+`, `-`, `*`, `/`. Cependant, en **C**, la division entière entre deux entiers retournera un entier, tandis qu'en **Python**, la division avec `/` retournera toujours un float.
+  
+  **Exemple en C :**
+  ```c
+  int a = 16, b = 3;
+  printf("%d\n", a / b);  // Résultat : 5 (division entière)
+  ```
+
+  **Exemple en Python :**
+  ```python
+  a = 16
+  b = 3
+  print(a / b)  # Résultat : 5.3333
+  ```
+
+- **Opérateurs logiques et de comparaison :**
+  - Les deux langages utilisent des opérateurs comme `==`, `!=`, `>`, `<`, `&&` (C) ou `and` (Python), `||` (C) ou `or` (Python) pour les comparaisons et les opérations logiques.
+
+- **Opérateurs bit à bit :**
+  - Les deux langages supportent les opérateurs bit à bit, comme `&`, `|`, `^` (XOR), `~` (NOT), `<<` (décalage à gauche), et `>>` (décalage à droite).
+
+---
+
+#### 4. **Boucles et structures de contrôle**
+
+- **Accolades vs Indentation :**
+  - En **C**, les blocs de code sont délimités par des accolades `{}`, ce qui permet d'organiser les structures de contrôle telles que les boucles ou les conditions.
+  - En **Python**, l'indentation est cruciale pour définir les blocs de code. Il n'y a pas d'accolades, donc le respect de l'indentation est obligatoire.
+
+  **Exemple d'une boucle `for` en C :**
+  ```c
+  for (int i = 0; i < 10; i++) {
+      printf("%d\n", i);
+  }
+  ```
+
+  **Exemple d'une boucle `for` en Python :**
+  ```python
+  for i in range(10):
+      print(i)
+  ```
+
+- **Conditions :**
+  - En **C**, les conditions sont entourées de parenthèses `(condition)` et le bloc conditionnel est encadré par des accolades `{}`.
+  - En **Python**, les parenthèses sont facultatives et l'indentation délimite le bloc conditionnel.
+
+---
+
+#### 5. **Conversion et formatage**
+
+- **Conversion binaire :**
+  - En **C**, la conversion d'un nombre entier en binaire nécessite un code explicite qui utilise des opérations de décalage de bits et de modulo.
+    ```c
+    void printBinary(int n) {
+        for (int i = 31; i >= 0; i--) {
+            printf("%d", (n >> i) & 1);
+        }
+        printf("\n");
     }
-    *ptr = 5;
-    free(ptr); // Libération de la mémoire
-    return 0;
-}
-```
+    ```
 
-**Python** : La gestion de la mémoire est automatique grâce au ramasse-miettes (garbage collector). Les objets non
-utilisés sont automatiquement collectés, ce qui réduit le risque de fuites de mémoire.
+  - En **Python**, la conversion d'un nombre en binaire est très simple grâce à la fonction intégrée `bin()`.
+    ```python
+    print(bin(16))  # Résultat : 0b10000
+    ```
 
-## Manipulation des variables
+- **Formatage de chaînes :**
+  - En **C**, le formatage est géré via des spécificateurs dans `printf()`. Par exemple, `%d` pour les entiers et `%f` pour les flottants.
+  - En **Python**, le formatage peut être fait de manière plus flexible avec les f-strings, qui permettent d'incorporer directement des expressions dans les chaînes.
+    ```python
+    name = "Alice"
+    print(f"Hello, {name}!")
+    ```
 
-### Déclaration des types
+---
 
-**C** : Les variables doivent être déclarées avec un type explicite (int, float, char, etc.). Le type est déterminé lors
-de la compilation.
+### Conclusion
 
-Exemple :
-
-```c++
-int entier = 10;
-float flottant = 3.14;
-```
-
-**Python** : Le typage est dynamique. Les variables n'ont pas besoin d'une déclaration de type explicite. Le type est
-déterminé à l'exécution.
-
-Exemple :
-
-```python
-entier = 10
-flottant = 3.14
-```
-
-**Python** supporte également les annotations de type (introduites dans **Python** 3.5) pour la documentation et
-l'analyse statique :
-
-Exemple :
-
-```python
-def ajouter(x: int, y: int) -> int:
-    return x + y
-```
-
-## Opérateurs
-
-### Arithmétiques
-
-**C** : Utilise les opérateurs +, -, *, /, % pour les opérations arithmétiques. La division entre deux entiers est une
-division entière par défaut.
-
-Exemple :
-
-```c++
-int a = 5;
-int b = 2;
-int somme = a + b; // somme = 7
-int division = a / b; // division = 2
-```
-
-**Python** : Utilise les mêmes opérateurs +, -, *, /, %. La division / retourne un flottant, tandis que // retourne une
-division entière.
-
-Exemple :
-
-```python
-a = 5
-b = 2
-somme = a + b  # somme = 7
-division = a / b  # division = 2.5
-division_entier = a // b  # division_entier = 2
-```
-
-### Logiques et Bit à Bit
-
-**C** : Les opérateurs logiques sont `&&` (ET), `||` (OU), `!` (NON).
-Les opérateurs bit à bit incluent `&` (ET), `|` (OU), `^` (XOR), `~` (NON), `<<` (décalage à gauche), `>>` (décalage à
-droite).
-
-Exemple :
-
-```c++
-int a = 5; // 0101 en binaire
-int b = 3; // 0011 en binaire
-int et = a & b; // et = 1 (0001 en binaire)
-```
-
-**Python** : Les opérateurs logiques sont and, or, not. Les opérateurs bit à bit sont &, |, ^, ~, <<, >>.
-
-Exemple :
-
-```python
-a = 5  # 0101 en binaire
-b = 3  # 0011 en binaire
-et = a & b  # et = 1 (0001 en binaire)
-```
-
-## Boucles et Structures de Contrôle
-
-### Délimitation des blocs de code
-
-**C** : Utilise des accolades {} pour délimiter les blocs de code. Les instructions conditionnelles et les boucles sont
-entourées d'accolades pour définir leur portée.
-
-Exemple :
-
-```c++
-if (a > b) {
-printf("a est plus grand que b\n");
-}
-```
-
-**Python** : Utilise l'indentation pour délimiter les blocs de code. Les blocs de code doivent être correctement
-indentés pour définir leur portée.
-
-Exemple :
-
-```python
-if a > b:
-    print("a est plus grand que b")
-```
-
-### Boucles
-
-**C** : Utilise les boucles for, while, et do-while. La boucle for est souvent utilisée avec des indices.
-
-Exemple :
-
-```c++
-for (int i = 0; i < 5; i++) {
-printf("%d\n", i);
-}
-```
-
-**Python** : Utilise les boucles for et while. La boucle for est souvent utilisée pour itérer sur des séquences (listes,
-tuples, etc.).
-
-Exemple :
-
-```python
-for i in range(5):
-    print(i)
-```
-
-### Structures conditionnelles
-
-**C** : Utilise les structures if, else if, else.
-
-Exemple :
-
-```c++
-if (a > b) {
-  printf("a est plus grand que b\n");
-} else {
-  printf("a n'est pas plus grand que b\n");
-}
-```
-
-**Python** : Utilise if, elif, else.
-
-Exemple :
-
-```python
-if a > b:
-  print("a est plus grand que b")
-else:
-  print("a n'est pas plus grand que b")
-```
-
-## Conversion et Formatage
-
-### Conversion en binaire
-
-**C** : Utilise des boucles et des opérations bit à bit pour convertir un entier en binaire. Le formatage peut être
-réalisé en utilisant des fonctions comme printf.
-
-Exemple :
-
-```c++
-#include <stdio.h>
-
-void afficher_binaire(int n) {
-  int bits[32];
-  int i = 0;
-  while (n > 0) {
-      bits[i++] = n % 2;
-      n /= 2;
-  }
-  for (int j = i - 1; j >= 0; j--) {
-      printf("%d", bits[j]);
-  }
-  printf("\n");
-}
-```
-**Python** : Utilise la fonction intégrée bin() pour obtenir la représentation binaire d'un entier, ou des f-strings
-pour un formatage plus flexible.
-
-Exemple :
-
-```python
-nombre = 42
-print(f"Représentation binaire : {bin(nombre)[2:]}")
-```
-
-La fonction bin() retourne une chaîne avec le préfixe '0b' pour indiquer que la chaîne est en binaire, donc [2:] est
-utilisé pour retirer ce préfixe.
+En résumé, **C** et **Python** sont deux langages puissants mais avec des approches très différentes. C est un langage plus proche du matériel, exigeant une gestion manuelle de la mémoire et un typage strict. Python, de son côté, privilégie la simplicité avec un typage dynamique, une gestion automatique de la mémoire, et une syntaxe plus lisible. Cependant, cette facilité d'utilisation de Python peut venir avec un coût en termes de performances, tandis que C est souvent préféré pour les systèmes à faible latence et les applications nécessitant un contrôle précis des ressources matérielles.

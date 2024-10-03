@@ -1,4 +1,4 @@
-def afficher_binaire(n):
+def afficher_binaire_exercice(n):
     # Gérer le cas où n est nul
     if n == 0:
         print("0")
@@ -21,7 +21,14 @@ def afficher_binaire(n):
 def main():
     # Lecture de la valeur de l'utilisateur
     nombre = int(input("Entrez un nombre entier : "))
-    afficher_binaire(nombre)
+
+    # Utilisation de la fonction pour afficher le nombre en binaire avec la méthode de l'exercice
+    print("Méthode de l'exercice :")
+    afficher_binaire_exercice(nombre)
+
+    # Utilisation de la fonction bin() pour convertir le nombre en binaire
+    print("Méthode de Python :")
+    print(str(bin(nombre))[2:])
 
 
 if __name__ == "__main__":
