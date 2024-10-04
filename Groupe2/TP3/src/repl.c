@@ -42,12 +42,17 @@ void afficher_aide(Commande commandes[], int const nombre_commandes)
 void traiter_echo(char* commande)
 {
     // Affiche le texte après la commande "echo"
-    printf("Echo: ");
 
-    // Imprime la chaîne à partir de l'index 5, si la commande est "echo"
+    // Imprime la chaîne à partir du n-ième caractère
     if (strncmp(commande, "echo ", 5) == 0)
     {
+        printf("Echo: ");
         printf("%s\n", commande + 5);
+    }
+    else if (strncmp(commande, "afficher ", 9) == 0)
+    {
+        printf("Afficher: ");
+        printf("%s\n", commande + 9);
     }
     else
     {
@@ -104,7 +109,11 @@ int main()
         {"echo", traiter_echo, "Afficher du texte"},
         {"date", afficher_date, "Afficher la date et l'heure actuelles"},
         {"version", afficher_version, "Afficher la version du programme"},
-        {"help", (void (*)(char*))afficher_aide, "Afficher l'aide"} // Cast help to match signature
+        {"help", (void (*)(char*))afficher_aide, "Afficher l'aide"}, // Cast help to match signature
+        {"quitter", traiter_quit, "Quitter le programme"}, // Ajout d'une commande alternative pour "quit"
+        {"afficher", traiter_echo, "Afficher du texte"}, // Ajout d'une commande alternative pour "echo"
+        {"aide", (void (*)(char*))afficher_aide, "Afficher l'aide"} // Ajout d'une commande alternative pour "help"
+
     };
 
     int const nombre_commandes = sizeof(commandes) / sizeof(Commande);
