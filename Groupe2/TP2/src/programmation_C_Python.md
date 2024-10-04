@@ -132,7 +132,7 @@ nouvelle_chaine = chaine.replace("jour", "soir")
 
 ---
 
-## 5.1 Gestion des Données et Recherche dans les Fichiers
+## 5.1 Gestion des Données
 
 ### C (Structures)
 En C, les données structurées comme celles d'étudiants peuvent être gérées via des **structures** (`struct`), qui regroupent plusieurs types de données sous un même nom. L'accès aux membres d'une structure se fait via l'opérateur `.`.
@@ -166,7 +166,7 @@ class Etudiant:
 
 ---
 
-## 5.2 Recherche de Phrases dans un Fichier
+## 5.2 Recherche dans les Fichiers
 
 ### C
 La lecture et la manipulation de fichiers en C utilisent des fonctions comme `fopen`, `fgets`, et `fclose` pour ouvrir et lire des fichiers ligne par ligne. La recherche de sous-chaînes peut se faire avec `strstr`, qui renvoie un pointeur vers la première occurrence de la sous-chaîne recherchée.

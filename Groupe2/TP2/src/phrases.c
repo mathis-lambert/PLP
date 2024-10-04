@@ -25,7 +25,7 @@ int main() {
 
     // Lire le fichier ligne par ligne et rechercher la phrase
     while (fgets(line, sizeof(line), file)) {
-        line_number++;
+        line_number++;  // incrémenter le numéro de ligne
         int count = 0;
         char *pos = line;
 

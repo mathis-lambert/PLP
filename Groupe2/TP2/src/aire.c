@@ -1,7 +1,7 @@
 // Directive de préprocesseur pour inclure la bibliothèque mathématique
 #include <math.h>  // Pour utiliser la constante M_PI
 
-#include <stdio.h> 
+#include <stdio.h>
 
 // Fonction pour calculer l'aire d'un cercle
 float calculer_aire(float rayon) {  

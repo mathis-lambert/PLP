@@ -1,6 +1,8 @@
 def search_phrase_in_file(filename, phrase):
     try:
+        # Ouvrir le fichier `filename` en mode lecture
         with open(filename, 'r', encoding='utf-8') as file:
+            # Lire toutes les lignes du fichier et les stocker dans `lines`
             lines = file.readlines()
 
         print("\nRésultats de la recherche :")
@@ -8,8 +10,8 @@ def search_phrase_in_file(filename, phrase):
 
         # Rechercher la phrase dans chaque ligne
         for i, line in enumerate(lines, start=1):
-            count = line.count(phrase)
-            if count > 0:
+            count = line.count(phrase)  # Compter le nombre d'occurrences
+            if count > 0:  # Si une ou plusieurs occurrences trouvées
                 print(f"Ligne {i} => {count} occurrence(s)")
                 found = True
 
