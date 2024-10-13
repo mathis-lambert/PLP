@@ -8,6 +8,7 @@
 * parseur.h
 * lexer.h
 * evaluation.h
+* time.h
 
 # Références
 
@@ -20,7 +21,8 @@
 * [free](https://koor.fr/C/cstdlib/free.wp)
 * [atoi](https://koor.fr/C/cstdlib/atoi.wp)
 * [Structures](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1043_aggregats-memoire-et-fichiers/4279_structures/)
-* [Pointeurs](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1043_aggregats-memoire-et-fichiers/4280_pointeurs/)
+* [Pointeurs](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1043_aggregats-memoire-et-fichiers/4277_les-pointeurs/)
+* [isdigit](https://koor.fr/C/cctype/isdigit.wp)
 * [Stack Overflow (Pour les bugs)](https://stackoverflow.com/)
 * [ChatGPT (pour les bugs si réponse non trouvée sur StackOverflow)](https://chatgpt.com/)
 
