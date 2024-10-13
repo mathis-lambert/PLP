@@ -16,7 +16,7 @@ double evaluate_expression(ASTNode* root) {
 
     // Si le nœud est de type nombre, retourner la valeur directement
     if (root->type == NODE_NUMBER) { // `->` est une notation pour accéder à un membre d'une structure à travers un pointeur
-        return root->value; // `root->value` est équivalent à `(*root).value`
+        return root->value; // `root->value` est équivalent à `(*root).value` on ne peut pas utiliser root.value car root est un pointeur
     }
 
     // Si le nœud est de type opérateur, évaluer récursivement les sous-arbres gauche et droit
