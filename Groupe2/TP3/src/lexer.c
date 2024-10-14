@@ -25,6 +25,16 @@ Token get_number(const char** input) {
     return token;
 }
 
+// Fonction pour extraire une parenthèse
+Token get_parenthesis(const char** input) {
+    Token token;
+    token.type = TOKEN_PARENTHESIS;
+    token.value[0] = **input;
+    token.value[1] = '\0';
+    (*input)++;
+    return token;
+}
+
 // Fonction pour extraire un opérateur
 Token get_operator(const char** input) {
     Token token;
@@ -56,6 +66,9 @@ Token *tokenize(const char* input, int *token_count) {
         } else if (*current == '+' || *current == '-' || *current == '*' || *current == '/') {
             // Tokeniser un opérateur
             tokens[(*token_count)++] = get_operator(&current);
+        } else if (*current == '(' || *current == ')') {
+            // Tokeniser une parenthèse
+            tokens[(*token_count)++] = get_parenthesis(&current);
         } else if (*current == '\0') {
             break; // Fin de la chaîne
         } else {

@@ -5,7 +5,9 @@
 #include <ctype.h>
 #include "lexer.h"
 #include "parseur.h"
+#include "parseur_stack.h"
 #include "evaluation.h"
+#include "evaluation_stack.h"
 
 /**
  * Programme qui simule un interpréteur de commandes simple.
@@ -145,10 +147,22 @@ void traiter_expression(char* commande, char* lang) {
     */
 
     // Parse les tokens pour créer un AST
-    ASTNode* ast = parse_tokens(tokens, token_count);
+    // ASTNode* ast = parse_tokens(tokens, token_count);
 
-    // Evaluer l'expression
-    double result = evaluate_expression(ast);
+    // Parse les tokens pour créer une expression en notation postfixe
+    Token postfix_tokens[64];
+    int postfix_count = parse_stack(tokens, token_count, postfix_tokens);
+
+    printf("Tokens (POSTFIX) : ");
+    for (int i = 0; i < postfix_count; i++) {
+        printf("%s ", postfix_tokens[i].value);
+    }
+
+    // Evaluer l'expression AST
+    // double result = evaluate_expression(ast);
+
+    // Evaluer l'expression en notation postfixe
+    double result = evaluate_postfix(postfix_tokens, token_count);
 
     // Affiche le résultat
     afficher_message("Result:", "Résultat:", lang);
@@ -156,8 +170,9 @@ void traiter_expression(char* commande, char* lang) {
 
     // Libère la mémoire allouée (mémoire allouée pour les tokens dans `tokenize` et pour l'AST dans `parse_tokens`)
     free(tokens);
-    free_ast(ast);
+    // free_ast(ast);
 }
+
 
 /**
  * Traite une commande entrée par l'utilisateur.
@@ -187,7 +202,7 @@ void traiter_commande(char* commande, Commande commandes[], int nombre_commandes
     }
 
     // Si la commande commence par un chiffre, essayer de l'évaluer comme une expression
-    if (isdigit(commande[0])) {
+    if (isdigit(commande[0]) || commande[0] == '(') {
         traiter_expression(commande, "en");
         return;
     }
