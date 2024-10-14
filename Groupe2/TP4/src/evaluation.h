@@ -1,7 +1,7 @@
-#ifndef EVALUATION_STACK_H
-#define EVALUATION_STACK_H
+#ifndef EVALUATION_H
+#define EVALUATION_H
 
-#include "parseur_stack.h"
+#include "parseur.h"
 
 // Fonction utilitaire pour obtenir la valeur d'un opérande sous forme de double
 double get_value(const char* value_str);
@@ -15,4 +15,4 @@ double evaluate_postfix(Token* tokens, int token_count);
 // Vérifie si la pile d'opérandes est vide
 int is_operand_stack_empty(OperandStack* stack);
 
-#endif // EVALUATION_STACK_H
+#endif // EVALUATION_H
