@@ -207,11 +207,14 @@ int parse_stack(Token* tokens, int token_count, Token* output) {
     // Libérer la mémoire allouée
     free_operator_stack(operator_stack);
 
-    printf("Tokens (POSTFIX) : ");
-    for (int i = 0; i < output_index; i++) {
-        printf("%s ", output[i].value);
+    if (DEBUG_MODE) {
+        printf("Tokens (POSTFIX) : ");
+        for (int i = 0; i < output_index; i++) {
+            printf("%s ", output[i].value);
+        }
+        printf("\n");
     }
-    printf("\n");
+
 
     return output_index;
 }

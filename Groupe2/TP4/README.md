@@ -18,6 +18,6 @@
 * 8/10 Assez complexe, nécessite une bonne compréhension des piles et des algorithmes d'évaluation d'expressions. Demande du temps pour la recherche et la programmation.
 
 # Commentaires
-* 
-* 
-
+* Dans ce TP, il a fallu comprendre le fonctionnement de l'algorithme de `Shunting Yard` pour convertir une expression arithmétique en notation postfixée.
+* La notation postfixée est plus facile à évaluer car elle ne nécessite pas de parenthèses pour déterminer l'ordre des opérations.
+* Ce TP a été un bon exercice pour comprendre les piles et les algorithmes d'évaluation d'expressions.

@@ -46,29 +46,23 @@ Token get_operator(const char** input) {
 }
 
 // Fonction principale pour tokeniser l'entrée
-Token *tokenize(const char* input, int *token_count) {
+int tokenize(const char* input, Token* output) {
     const char* current = input;
-    *token_count = 0;
+    int token_count = 0;
 
-    // Allouer dynamiquement la mémoire pour les tokens
-    Token *tokens = (Token *)malloc(64 * sizeof(Token));
-    if (tokens == NULL) {
-        printf("Erreur: impossible d'allouer de la mémoire pour les tokens\n");
-        exit(1);
-    }
 
     while (*current != '\0') {
         skip_whitespace(&current);
 
         if (isdigit(*current) || *current == '.') {
             // Tokeniser un nombre
-            tokens[(*token_count)++] = get_number(&current);
+            output[(token_count)++] = get_number(&current);
         } else if (*current == '+' || *current == '-' || *current == '*' || *current == '/') {
             // Tokeniser un opérateur
-            tokens[(*token_count)++] = get_operator(&current);
+            output[(token_count)++] = get_operator(&current);
         } else if (*current == '(' || *current == ')') {
             // Tokeniser une parenthèse
-            tokens[(*token_count)++] = get_parenthesis(&current);
+            output[(token_count)++] = get_parenthesis(&current);
         } else if (*current == '\0') {
             break; // Fin de la chaîne
         } else {
@@ -82,8 +76,8 @@ Token *tokenize(const char* input, int *token_count) {
     Token eof_token;
     eof_token.type = TOKEN_EOF;
     strcpy(eof_token.value, "EOF");
-    tokens[(*token_count)++] = eof_token;
+    output[token_count++] = eof_token;
 
-    // Retourner les tokens
-    return tokens;
+    // Retourner le nombre de tokens
+    return token_count;
 }

@@ -137,22 +137,18 @@ void convertir_en_minuscules(char* str) {
  */
 void traiter_expression(char* commande, char* lang) {
     // Tokenize l'expression mathématique
-    int token_count = 0; // Nombre de tokens
-    Token *tokens = tokenize(commande, &token_count);
     /*
-    *  ici je passe l'adresse de token_count pour que la fonction tokenize puisse modifier sa valeur
-    *  (passage par référence) car en C on ne peut pas retourner plusieurs valeurs dans une fonction.
+    *  ici je passe l'adresse de tokens pour pouvoir la modifier dans la fonction tokenize
+    *  la fonction retourne le nombre de tokens et modifie le tableau de tokens passé en paramètre (output)
+    *  car en C on ne peut pas retourner plusieurs valeurs, donc on passe par référence.
     */
+    Token* tokens = (Token*)malloc(64 * sizeof(Token));
+    int token_count = tokenize(commande, tokens);
 
-    // Parse les tokens pour créer un AST
-    // ASTNode* ast = parse_tokens(tokens, token_count);
 
     // Parse les tokens pour créer une expression en notation postfixe
     Token postfix_tokens[64];
     int postfix_count = parse_stack(tokens, token_count, postfix_tokens);
-
-    // Evaluer l'expression AST
-    // double result = evaluate_expression(ast);
 
     // Evaluer l'expression en notation postfixe
     double result = evaluate_postfix(postfix_tokens, token_count);
@@ -161,9 +157,8 @@ void traiter_expression(char* commande, char* lang) {
     afficher_message("Result:", "Résultat:", lang);
     print_result(result);
 
-    // Libère la mémoire allouée (mémoire allouée pour les tokens dans `tokenize` et pour l'AST dans `parse_tokens`)
+    // Libère la mémoire allouée (mémoire allouée pour les tokens dans `tokenize`)
     free(tokens);
-    // free_ast(ast);
 }
 
 
@@ -185,7 +180,7 @@ void traiter_commande(char* commande, Commande commandes[], int nombre_commandes
             // Détermine la langue de la commande
             char* lang = (strncmp(commande, commandes[i].commande_fr, strlen(commandes[i].commande_fr)) == 0) ? "fr" : "en";
             // Exécute la fonction associée à la commande
-            if (commandes[i].fonction == (void (*)(char*, char*))afficher_aide) {
+            if (commandes[i].fonction == (void (*)(char*, char*))afficher_aide) {  // cast nécessaire pour éviter un avertissement
                 afficher_aide(commandes, nombre_commandes, lang);
             } else {
                 commandes[i].fonction(commande, lang);
@@ -194,7 +189,7 @@ void traiter_commande(char* commande, Commande commandes[], int nombre_commandes
         }
     }
 
-    // Si la commande commence par un chiffre, essayer de l'évaluer comme une expression
+    // Si la commande commence par un chiffre ou une parenthèse, on l'évalue comme une expression mathématique
     if (isdigit(commande[0]) || commande[0] == '(') {
         traiter_expression(commande, "en");
         return;
@@ -219,7 +214,7 @@ int main() {
     while (1) {
         printf("> ");  // Affiche le prompt de commande
         char commande[1024];
-        if (!fgets(commande, sizeof(commande), stdin)) {  // Lit la commande utilisateur
+        if (!fgets(commande, sizeof(commande), stdin)) {  // Lit la commande utilisateur. On n'utilise pas scanf pour éviter les problèmes de buffer
             break;  // Arrête le programme en cas d'erreur de lecture
         }
         commande[strcspn(commande, "\n")] = 0;  // Supprime le caractère de fin de ligne
