@@ -19,6 +19,6 @@ Token get_number(const char** input);
 Token get_parenthesis(const char** input);
 Token get_operator(const char** input);
 
-Token *tokenize(const char* input, int *token_count);
+int tokenize(const char* input, Token* output);
 
 #endif // LEXER_H

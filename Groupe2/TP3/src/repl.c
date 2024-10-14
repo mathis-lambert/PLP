@@ -137,8 +137,8 @@ void convertir_en_minuscules(char* str) {
  */
 void traiter_expression(char* commande, char* lang) {
     // Tokenize l'expression mathématique
-    int token_count = 0; // Nombre de tokens
-    Token *tokens = tokenize(commande, &token_count);
+    Token *tokens =  (Token*)malloc(64 * sizeof(Token));
+    int token_count = tokenize(commande, tokens);
     /*
     *  ici je passe l'adresse de token_count pour que la fonction tokenize puisse modifier sa valeur
     *  (passage par référence) car en C on ne peut pas retourner plusieurs valeurs dans une fonction.
