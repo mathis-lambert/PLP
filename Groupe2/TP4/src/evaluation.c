@@ -34,9 +34,7 @@ double apply_operator(char operator, double left, double right) {
 double evaluate_postfix(Token* tokens, int token_count) {
     OperandStack* operand_stack = create_operand_stack(token_count);
 
-
-
-    for (int i = 0; i < token_count; i++) {
+    for (int i = 0; i < token_count; i++) {  // Parcourir tous les tokens
         Token token = tokens[i];
 
         if (token.value[0] == '\0') {  // Fin de la chaîne
@@ -44,9 +42,12 @@ double evaluate_postfix(Token* tokens, int token_count) {
         }
 
         if (token.type == TOKEN_NUMBER) {
+
             push_operand(operand_stack, token);  // Empiler les nombres sur la pile
+
         } else if (token.type == TOKEN_OPERATOR) {
-            if (is_operand_stack_empty(operand_stack) || operand_stack->top < 1) {
+
+            if (is_operand_stack_empty(operand_stack) || operand_stack->top < 1) { // Vérifier s'il y a assez d'opérandes
                 fprintf(stderr, "Erreur: Pas assez d'opérandes pour l'opération\n");
                 free_operand_stack(operand_stack);
                 exit(EXIT_FAILURE);
@@ -67,7 +68,7 @@ double evaluate_postfix(Token* tokens, int token_count) {
             Token result_token;
             result_token.type = TOKEN_NUMBER;
             snprintf(result_token.value, sizeof(result_token.value), "%.2f", result);
-            push_operand(operand_stack, result_token);
+            push_operand(operand_stack, result_token); // Empiler le résultat sur la pile
         }
     }
 

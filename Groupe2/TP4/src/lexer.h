@@ -14,11 +14,11 @@ typedef struct {
     char value[64];
 } Token;
 
-void skip_whitespace(const char** input);
-Token get_number(const char** input);
-Token get_parenthesis(const char** input);
-Token get_operator(const char** input);
+void skip_whitespace(const char** input);  // Fonction pour ignorer les espaces
+Token get_number(const char** input);  // Fonction pour extraire un nombre
+Token get_parenthesis(const char** input);  // Fonction pour extraire une parenthèse
+Token get_operator(const char** input);  // Fonction pour extraire un opérateur
 
-int tokenize(const char* input, Token* output);
+int tokenize(const char* input, Token* output);  // Fonction principale pour tokeniser l'entrée
 
 #endif // LEXER_H

@@ -8,18 +8,22 @@
 
 // Crée une pile pour les opérandes
 OperandStack* create_operand_stack(int capacity) {
-    OperandStack* stack = (OperandStack*)malloc(sizeof(OperandStack));
+    OperandStack* stack = (OperandStack*)malloc(sizeof(OperandStack));  // Allouer de la mémoire pour la pile
+
     if (!stack) {
         fprintf(stderr, "Erreur: Impossible d'allouer de la mémoire pour la pile d'opérandes\n");
         exit(EXIT_FAILURE);
     }
-    stack->data = (Token*)malloc(capacity * sizeof(Token));
+
+    stack->data = (Token*)malloc(capacity * sizeof(Token));  // Allouer de la mémoire pour le tableau de données
+
     if (!stack->data) {
         fprintf(stderr, "Erreur: Impossible d'allouer de la mémoire pour le tableau de données de la pile d'opérandes\n");
         exit(EXIT_FAILURE);
     }
-    stack->top = -1;
-    stack->capacity = capacity;
+
+    stack->top = -1;  // Initialiser le sommet de la pile
+    stack->capacity = capacity;  // Initialiser la capacité de la pile
 
     if (DEBUG_MODE) {
         printf("Pile d'opérandes créée avec une capacité de %d\n", capacity);
@@ -30,11 +34,13 @@ OperandStack* create_operand_stack(int capacity) {
 
 // Empile un opérande sur la pile
 void push_operand(OperandStack* stack, Token operand) {
+
     if (stack->top == stack->capacity - 1) {
         fprintf(stderr, "Erreur: Dépassement de capacité de la pile d'opérandes\n");
         exit(EXIT_FAILURE);
     }
-    stack->data[++stack->top] = operand;
+
+    stack->data[++stack->top] = operand;  // Empiler l'opérande
 
     if (DEBUG_MODE) {
         printf("Opérande empilée: %s\n", operand.value);
@@ -43,11 +49,13 @@ void push_operand(OperandStack* stack, Token operand) {
 
 // Dépile un opérande de la pile
 Token pop_operand(OperandStack* stack) {
+
     if (stack->top == -1) {
         fprintf(stderr, "Erreur: Tentative de dépiler une pile d'opérandes vide\n");
         exit(EXIT_FAILURE);
     }
-    Token operand = stack->data[stack->top--];
+
+    Token operand = stack->data[stack->top--];  // Dépiler l'opérande
 
     if (DEBUG_MODE) {
         printf("Opérande dépilée: %s\n", operand.value);
@@ -58,6 +66,7 @@ Token pop_operand(OperandStack* stack) {
 
 // Retourne l'opérande au sommet de la pile sans le dépiler
 Token peek_operand(OperandStack* stack) {
+
     if (stack->top == -1) {
         fprintf(stderr, "Erreur: Tentative de consulter une pile d'opérandes vide\n");
         exit(EXIT_FAILURE);
@@ -67,12 +76,12 @@ Token peek_operand(OperandStack* stack) {
         printf("Opérande au sommet de la pile: %s\n", stack->data[stack->top].value);
     }
 
-    return stack->data[stack->top];
+    return stack->data[stack->top];  // Retourner l'opérande au sommet de la pile
 }
 
 // Vérifie si la pile d'opérandes est vide
 int is_operand_stack_empty(OperandStack* stack) {
-    return stack->top == -1;
+    return stack->top == -1;  // Retourner vrai si la pile est vide
 }
 
 // Libère la mémoire allouée pour la pile d'opérandes
@@ -214,7 +223,6 @@ int parse_stack(Token* tokens, int token_count, Token* output) {
         }
         printf("\n");
     }
-
 
     return output_index;
 }

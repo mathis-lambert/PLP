@@ -77,7 +77,7 @@ void afficher_aide(Commande commandes[], int nombre_commandes, char* lang) {
                (strcmp(lang, "fr") == 0) ? commandes[i].commande_fr : commandes[i].commande_en,
                (strcmp(lang, "fr") == 0) ? commandes[i].description_fr : commandes[i].description_en);
     }
-    afficher_message("You can also enter arithmetic expressions like '2 + 3' or '1.5 * 4'.", "Vous pouvez également entrer des expressions arithmétiques comme '2 + 3' ou '1.5 * 4'.", lang);
+    afficher_message("You can also enter complex arithmetic expressions like '2 + 3' or '1.5 * 4'.", "Vous pouvez également entrer des expressions arithmétiques comme '2 + 3' ou '1.5 * 4'.", lang);
 }
 
 /**
