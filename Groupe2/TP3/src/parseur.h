@@ -14,8 +14,8 @@ typedef struct ASTNode {
         double value;  // Si le nœud est un nombre
         struct {
             char operator;
-            struct ASTNode* left;
-            struct ASTNode* right;
+            struct ASTNode* left;  // Sous-arbre gauche
+            struct ASTNode* right;  // Sous-arbre droit
         } op;  // Si le nœud est un opérateur
     };
 } ASTNode;

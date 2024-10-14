@@ -20,7 +20,7 @@ typedef struct {
     char* description_fr;  // Description de la commande en français
 } Commande;
 
-// Prototypes des fonctions
+// Prototypes des fonctions (on pourrait aussi les déclarer dans un fichier d'en-tête séparé)
 void afficher_message(char* en, char* fr, char* lang);
 void afficher_version(char* unused, char* lang);
 void afficher_aide(Commande commandes[], int nombre_commandes, char* lang);
@@ -28,8 +28,6 @@ void traiter_echo(char* commande, char* lang);
 void traiter_quit(char* unused, char* lang);
 void afficher_date(char* unused, char* lang);
 void traiter_expression(char* commande, char* lang);
-
-// Fonctions utilitaires
 
 /**
  * Affiche un message en fonction de la langue choisie.

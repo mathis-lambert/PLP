@@ -23,6 +23,9 @@
 * [Structures](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1043_aggregats-memoire-et-fichiers/4279_structures/)
 * [Pointeurs](https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1043_aggregats-memoire-et-fichiers/4277_les-pointeurs/)
 * [isdigit](https://koor.fr/C/cctype/isdigit.wp)
+* [atof](https://koor.fr/C/cstdlib/atof.wp)
+* [strcmp](https://koor.fr/C/cstring/strcmp.wp)
+* [strchr](https://koor.fr/C/cstring/strchr.wp)
 * [Stack Overflow (Pour les bugs)](https://stackoverflow.com/)
 * [ChatGPT (pour les bugs si réponse non trouvée sur StackOverflow)](https://chatgpt.com/)
 
@@ -46,4 +49,12 @@
 - Comment pourriez-vous modifier le code pour ajouter de nouvelles commandes?
     - Pour traiter des nouvelles commandes il faudrait ajouter des fonctions pour chaque nouvelle commande et les
       appeler dans la fonction `main()` en fonction de la commande saisie par l'utilisateur.
+
+## Exercice 3.2
+
+Code testé et fonctionnel.
+
+## Exercice 3.3
+
+Code testé et fonctionnel.
 

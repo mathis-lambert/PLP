@@ -72,6 +72,10 @@ ASTNode* parse_tokens(Token* tokens, int num_tokens) {
 
     return root;
 }
+// exemple de nœud AST
+//     +
+//    / \
+//   2   3
 
 /**
  * Libère la mémoire utilisée par l'AST.

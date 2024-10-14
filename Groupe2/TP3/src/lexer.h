@@ -4,7 +4,6 @@
 typedef enum {
     TOKEN_NUMBER,
     TOKEN_OPERATOR,
-    TOKEN_PARENTHESIS,
     TOKEN_UNKNOWN,
     TOKEN_EOF
 } TokenType;
@@ -16,7 +15,6 @@ typedef struct {
 
 void skip_whitespace(const char** input);
 Token get_number(const char** input);
-Token get_parenthesis(const char** input);
 Token get_operator(const char** input);
 
 int tokenize(const char* input, Token* output);
