@@ -4,7 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define DEBUG_MODE 1 // Activer/désactiver le mode debug
+#define DEBUG_MODE 0 // Activer/désactiver le mode debug
 
 // Crée une pile pour les opérandes
 OperandStack* create_operand_stack(int capacity) {
