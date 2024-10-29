@@ -36,6 +36,35 @@ void traiter_variable(char *commande, char *lang);
 // Fonctions utilitaires
 
 /**
+ * Vérifie si une chaîne de caractères correspond à un motif donné.
+ * @param string La chaîne de caractères à vérifier
+ * @param pattern Le motif à rechercher
+ * @return 1 si le motif est trouvé, 0 sinon
+ */
+int match(const char *string, const char *pattern)
+{
+    regex_t regex;
+    int reti;
+
+    // Compile le regex avec la syntaxe étendue
+    reti = regcomp(&regex, pattern, REG_EXTENDED);
+    if (reti)
+    {
+        fprintf(stderr, "Erreur de compilation de l'expression régulière\n");
+        return 0; // Retourne faux en cas d'erreur de compilation
+    }
+
+    // Exécute la regex pour vérifier la correspondance
+    reti = regexec(&regex, string, 0, NULL, 0);
+
+    // Libère la mémoire allouée pour l'expression régulière
+    regfree(&regex);
+
+    // Retourne 1 si correspondance trouvée, sinon 0
+    return reti == 0;
+}
+
+/**
  * Affiche un message en fonction de la langue choisie.
  * @param en Message en anglais
  * @param fr Message en français
@@ -163,6 +192,17 @@ void traiter_expression(char *commande, char *lang)
     // Vérifier si c'est une expression lambda
     if (tokens[1].type == TOKEN_LAMBDA)
     {
+
+        // vérifier si l'expression lambda est valide avec un regex
+        const char *lambda_pattern = "^\\(lambda[[:space:]]+x\\.[[:print:]]+\\)[[:space:]]*[-+]?[0-9]*\\.?[0-9]+$";
+
+        if (!match(commande, lambda_pattern))
+        {
+            afficher_message("Invalid lambda expression.", "Expression lambda invalide.", lang);
+            free(tokens);
+            return;
+        }
+
         // Vérifier la syntaxe et extraire la variable et l'expression
         if (tokens[2].type == TOKEN_IDENTIFIER && tokens[3].value[0] == '.')
         {
@@ -231,11 +271,12 @@ void traiter_expression(char *commande, char *lang)
             Token argument_token = get_number(&argument_str);
 
             // afficher les tokens de l'expression lambda
-            printf("Lambda expression tokens: ");
-            for (int i = 0; i < expression_token_count; i++)
-            {
-                printf("%s ", expression_tokens[i].value);
-            }
+            // printf("Lambda expression tokens: ");
+            // for (int i = 0; i < expression_token_count; i++)
+            // {
+            //     printf("%s ", expression_tokens[i].value);
+            // }
+            // printf("\n");
 
             if (argument_token.type == TOKEN_NUMBER)
             {
